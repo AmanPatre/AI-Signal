@@ -65,8 +65,6 @@ function CollegesContent() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-
-
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
           <div>
@@ -83,8 +81,6 @@ function CollegesContent() {
 
       <div className="max-w-7xl mx-auto px-4 py-6">
         <div className="flex flex-col lg:flex-row gap-6">
-
-
           <aside className="lg:w-72 flex-shrink-0">
             <form onSubmit={handleApply} className="bg-white rounded-xl border border-gray-200 overflow-hidden sticky top-20">
               <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
@@ -150,7 +146,6 @@ function CollegesContent() {
             </form>
           </aside>
 
-
           <main className="flex-1">
             {loading ? (
               <div className="flex items-center justify-center py-20">
@@ -197,7 +192,6 @@ function CollegesContent() {
                     </div>
                   </div>
                 ))}
-
 
                 {total > 12 && (
                   <div className="flex justify-center gap-2 pt-4">

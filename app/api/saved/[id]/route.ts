@@ -4,7 +4,6 @@ import { ApiResponse } from '@/types'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 
-// DELETE /api/saved/[id] - unsave a college
 export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -32,7 +31,6 @@ export async function DELETE(
       )
     }
 
-    // Delete saved college
     await prisma.savedCollege.deleteMany({
       where: {
         userId: user.id,

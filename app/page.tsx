@@ -4,8 +4,6 @@ import { GraduationCap, Sparkles, BarChart3, Bookmark, Search, ArrowRight, Chevr
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
-
-
       <section className="bg-gradient-to-br from-primary to-blue-700 text-white py-16 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-3">India's Smartest College Discovery Platform</p>
@@ -26,7 +24,6 @@ export default function Home() {
         </div>
       </section>
 
-
       <section className="bg-slate-900 py-5 px-4">
         <div className="max-w-6xl mx-auto grid grid-cols-3 divide-x divide-slate-700 text-center">
           <div className="px-4">
@@ -43,7 +40,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
 
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto">
@@ -90,7 +86,6 @@ export default function Home() {
         </div>
       </section>
 
-
       <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl font-bold text-gray-900 mb-2">Browse by Exam</h2>
@@ -110,7 +105,6 @@ export default function Home() {
         </div>
       </section>
 
-
       <section className="bg-primary py-14 px-4">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl font-bold text-white mb-3">Ready to find your perfect college?</h2>
@@ -120,7 +114,6 @@ export default function Home() {
           </Link>
         </div>
       </section>
-
 
       <footer className="border-t border-gray-200 py-10 px-4 bg-white">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">

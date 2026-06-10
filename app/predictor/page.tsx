@@ -18,12 +18,6 @@ const CHANCE_BADGE: Record<string, string> = {
   Ambitious: 'bg-red-100 text-red-700 border-red-200',
 }
 
-const CHANCE_BAR: Record<string, string> = {
-  Safe: 'bg-green-500',
-  Moderate: 'bg-yellow-500',
-  Ambitious: 'bg-red-400',
-}
-
 export default function PredictorPage() {
   const [formData, setFormData] = useState({
     exam: 'JEE Main',
@@ -79,8 +73,6 @@ export default function PredictorPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-
-
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-5xl mx-auto px-4 py-5">
           <Link href="/" className="inline-flex items-center gap-1.5 text-gray-500 hover:text-primary text-sm mb-3 transition-colors">
@@ -99,7 +91,6 @@ export default function PredictorPage() {
       </div>
 
       <div className="max-w-5xl mx-auto px-4 py-8">
-
         <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
           <h2 className="font-semibold text-gray-800 mb-5 text-sm uppercase tracking-wide">Your Academic Profile</h2>
           <form onSubmit={handleSubmit}>
@@ -168,14 +159,12 @@ export default function PredictorPage() {
           </form>
         </div>
 
-
         {error && (
           <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-start gap-3 mb-6">
             <AlertCircle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
             <p className="text-amber-800 text-sm">{error}</p>
           </div>
         )}
-
 
         {fallback.length > 0 && (
           <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
@@ -195,7 +184,6 @@ export default function PredictorPage() {
             </div>
           </div>
         )}
-
 
         {results?.length > 0 && (
           <div>

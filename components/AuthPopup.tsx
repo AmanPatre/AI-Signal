@@ -3,7 +3,7 @@
 import { useSession } from 'next-auth/react'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { LogIn, X, ShieldAlert } from 'lucide-react'
+import { LogIn, ShieldAlert } from 'lucide-react'
 import Link from 'next/link'
 
 const PROTECTED_ROUTES = ['/colleges', '/predictor', '/compare', '/saved']
@@ -24,27 +24,27 @@ export default function AuthPopup() {
     if (!show) return null
 
     return (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-300">
-            <div className="bg-white rounded-[2.5rem] w-full max-w-md p-8 shadow-2xl border border-slate-100 flex flex-col items-center text-center animate-in zoom-in-95 duration-300">
-                <div className="w-20 h-20 bg-rose-50 rounded-3xl flex items-center justify-center text-rose-500 mb-6">
-                    <ShieldAlert className="w-10 h-10" />
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-gray-900/40 backdrop-blur-sm">
+            <div className="bg-white rounded-xl w-full max-w-md p-8 shadow-xl border border-gray-100 flex flex-col items-center text-center animate-in fade-in zoom-in-95 duration-200">
+                <div className="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center text-red-500 mb-5">
+                    <ShieldAlert className="w-8 h-8" />
                 </div>
 
-                <h2 className="text-3xl font-black text-slate-900 mb-2">Access Restricted</h2>
-                <p className="text-slate-500 font-medium mb-8 leading-relaxed">
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">Access Restricted</h2>
+                <p className="text-gray-500 text-sm mb-8 leading-relaxed">
                     Please sign in to unlock the Prediction Engine, Compare Tool, and Institutional Intelligence.
                 </p>
 
                 <div className="flex flex-col w-full gap-3">
                     <Link
                         href="/auth/signin"
-                        className="w-full bg-primary text-white py-4 rounded-2xl font-black flex items-center justify-center gap-2 hover:bg-primary-dark transition-all shadow-lg shadow-primary/20"
+                        className="w-full bg-primary text-white py-2.5 rounded-lg font-semibold flex items-center justify-center gap-2 hover:bg-blue-700 transition-colors"
                     >
-                        <LogIn className="w-5 h-5" /> Sign In to Proceed
+                        <LogIn className="w-4 h-4" /> Sign In to Proceed
                     </Link>
                     <Link
                         href="/"
-                        className="w-full bg-slate-50 text-slate-400 py-4 rounded-2xl font-black hover:bg-slate-100 transition-all"
+                        className="w-full text-gray-500 py-2.5 rounded-lg font-medium hover:bg-gray-50 transition-colors"
                         onClick={() => setShow(false)}
                     >
                         Back to Home
