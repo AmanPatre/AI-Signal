@@ -1,0 +1,101 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// College model - main entity for the platform
+model College {
+  id               String   @id @default(cuid())
+  slug             String   @unique
+  name             String
+  city             String
+  state            String
+  established      Int
+  about            String   @db.Text
+  feesMin          Int      @map("fees_min")
+  feesMax          Int      @map("fees_max")
+  overallRating    Float    @map("overall_rating") @default(0)
+  examAccepted     String[] @map("exam_accepted")
+  accreditations   String[]
+  campusSize       String?  @map("campus_size")
+  website          String?
+  placementAvg     Int?     @map("placement_avg")
+  placementHighest Int?     @map("placement_highest")
+  topRecruiters    String[] @map("top_recruiters")
+  courses          Course[]
+  reviews          Review[]
+  savedColleges    SavedCollege[]
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
+
+  @@index([state])
+  @@index([slug])
+  @@map("colleges")
+}
+
+// Course model - courses offered by each college
+model Course {
+  id          String   @id @default(cuid())
+  collegeId   String   @map("college_id")
+  name        String
+  duration    String
+  annualFees  Int      @map("annual_fees")
+  eligibility String
+  field       String
+  college     College  @relation(fields: [collegeId], references: [id], onDelete: Cascade)
+
+  @@index([collegeId])
+  @@index([field])
+  @@map("courses")
+}
+
+// Review model - user reviews for colleges
+model Review {
+  id             String   @id @default(cuid())
+  collegeId      String   @map("college_id")
+  reviewerName   String   @map("reviewer_name")
+  rating         Int
+  content        String   @db.Text
+  yearOfPassing  Int      @map("year_of_passing")
+  createdAt      DateTime @default(now()) @map("created_at")
+  college        College  @relation(fields: [collegeId], references: [id], onDelete: Cascade)
+
+  @@index([collegeId])
+  @@map("reviews")
+}
+
+// User model - for auth and saving colleges
+model User {
+  id            String          @id @default(cuid())
+  email         String          @unique
+  name          String?
+  image         String?
+  password      String?
+  savedColleges SavedCollege[]
+  createdAt     DateTime        @default(now()) @map("created_at")
+  updatedAt     DateTime        @updatedAt @map("updated_at")
+
+  @@index([email])
+  @@map("users")
+}
+
+// SavedCollege model - junction table for user-college saves
+model SavedCollege {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  collegeId String   @map("college_id")
+  savedAt   DateTime @default(now()) @map("saved_at")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  college   College  @relation(fields: [collegeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, collegeId])
+  @@index([userId])
+  @@index([collegeId])
+  @@map("saved_colleges")
+}
